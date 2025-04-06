@@ -1,0 +1,1 @@
+java Ej9_ParcialArboles < InputEj9_01.in
