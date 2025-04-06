@@ -1,4 +1,4 @@
-package TPN2;
+package TPN2.Ej6;
 import clases_tps.BinaryTree;
 
 import java.util.ArrayList;

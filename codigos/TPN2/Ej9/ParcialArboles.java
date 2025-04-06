@@ -1,11 +1,11 @@
-package TPN2;
+package TPN2.Ej9;
 import clases_tps.BinaryTree;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Ej9_ParcialArboles {
+public class ParcialArboles {
     public BinaryTree<Integer> crear_arbol(Scanner sc) {
         int tam = sc.nextInt();
         ArrayList<Integer> posiciones = new ArrayList<>();
@@ -77,12 +77,12 @@ public class Ej9_ParcialArboles {
     }
 
     public static void main(String[] args) {
-        Ej9_ParcialArboles arbol = new Ej9_ParcialArboles();
+        ParcialArboles arbol = new ParcialArboles();
         Scanner sc = new Scanner(System.in);
         BinaryTree<Integer> root1 = arbol.crear_arbol(sc);
         arbol.inOrder(root1);
         BinaryTree<?> root2 = arbol.sumAndDif(root1);
-        System.out.println("\nRecorrido en orden del nuevo arbol:");
+        System.out.println("\nRecorrido inorder del nuevo arbol:");
         arbol.inOrderList((BinaryTree<?>) root2);
     }
 }

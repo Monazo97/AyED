@@ -1,9 +1,9 @@
-package TPN2;
+package TPN2.Ej8;
 import clases_tps.BinaryTree;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Ej8_ParcialArboles {
+public class ParcialArboles {
         
     public BinaryTree<Integer> crear_arbol(Scanner sc) {
         int tam = sc.nextInt();
@@ -46,7 +46,7 @@ public class Ej8_ParcialArboles {
         return esPrefijo(root1.getLeftChild(), root2.getLeftChild()) && esPrefijo(root1.getRightChild(), root2.getRightChild());
     }
     public  static void main(String[] args) {
-        Ej8_ParcialArboles arbol = new Ej8_ParcialArboles();
+        ParcialArboles arbol = new ParcialArboles();
         Scanner sc = new Scanner(System.in);
         BinaryTree<Integer> root1 = arbol.crear_arbol(sc);
         BinaryTree<Integer> root2 = arbol.crear_arbol(sc);

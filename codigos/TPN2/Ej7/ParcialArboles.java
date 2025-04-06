@@ -1,10 +1,10 @@
-package TPN2;
+package TPN2.Ej7;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import clases_tps.BinaryTree;
 
-public class Ej7_ParcialArboles {
+public class ParcialArboles {
     BinaryTree<Integer> root = new BinaryTree<>();
     
     public void crear_arbol() {
@@ -64,13 +64,14 @@ public class Ej7_ParcialArboles {
     }
 
     public static void main(String[] args) {
-        Ej7_ParcialArboles tree = new Ej7_ParcialArboles();
+        ParcialArboles tree = new ParcialArboles();
         tree.crear_arbol();
         // Imprimimos el inorder para chequear que este bien construido el arbol
         tree.inOrder(tree.root);
         System.out.println();
 
         int num;
+        System.out.println("Ingrese el nodo a verificar si es left tree:");
         Scanner sc = new Scanner(System.in);
         num = sc.nextInt();
         System.out.println(tree.isLeftTree(num) ? "El nodo " + num + " es left tree." : "El nodo " + num + " NO es un nodo izquierdo.");
