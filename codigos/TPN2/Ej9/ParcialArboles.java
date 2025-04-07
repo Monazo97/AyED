@@ -1,5 +1,6 @@
 package TPN2.Ej9;
 import clases_tps.BinaryTree;
+import clases_tps.Pair;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,38 +41,38 @@ public class ParcialArboles {
 
     public void inOrderList(BinaryTree<?> node) {
         if(node.hasLeftChild()) this.inOrderList(node.getLeftChild());
-        List<Integer> elemento = (List<Integer>) node.getData();
-        System.out.print("(" + elemento.get(0) + "," + elemento.get(1) + ") ");
+        Pair<Integer,Integer> elemento = (Pair<Integer,Integer>) node.getData();
+        System.out.print("(" + elemento.getFirst() + "," + elemento.getSecond() + ") ");
         if(node.hasRightChild()) this.inOrderList(node.getRightChild());
     }
 
     /*
-     * Recorre el arbol y devuelve un nuevo arbol con la suma de los valores de los nodos
+     * Recorre el arbol y devuelve un nuevo arbol con la firsta de los valores de los nodos
      * y la diferencia entre el valor del nodo y el de su padre.
-     * @return BinaryTree<List<Integer>> con la suma acumulada y la diferencia con el padre.
+     * @return BinaryTree<Pair<Integer,Integer>> con la firsta acumulada y la diferencia con el padre.
      */
-    private BinaryTree<List<Integer>> treeTraversal(BinaryTree<Integer> node, int fatherValue, int cumSum) {
-        BinaryTree<List<Integer>> result = new BinaryTree<>(new ArrayList<>());
+    private BinaryTree<Pair<Integer,Integer>> treeTraversal(BinaryTree<Integer> node, int fatherValue, int cumfirst) {
+        BinaryTree<Pair<Integer,Integer>> result = new BinaryTree<>();
         if(node.hasLeftChild()) {
-            BinaryTree<List<Integer>> left = treeTraversal(node.getLeftChild(), node.getData(), cumSum + node.getData());
+            BinaryTree<Pair<Integer,Integer>> left = treeTraversal(node.getLeftChild(), node.getData(), cumfirst + node.getData());
             result.addLeftChild(left);
         }
         if(node.hasRightChild()) {
-            BinaryTree<List<Integer>> right = treeTraversal(node.getRightChild(), node.getData(), cumSum + node.getData());
+            BinaryTree<Pair<Integer,Integer>> right = treeTraversal(node.getRightChild(), node.getData(), cumfirst + node.getData());
             result.addRightChild(right);
         }
-        ArrayList<Integer> values = new ArrayList<>();
-        values.add(cumSum + node.getData());
-        values.add(node.getData() - fatherValue);
+        Pair<Integer,Integer> values = new Pair<>();
+        values.setFirst(cumfirst + node.getData());
+        values.setSecond(node.getData() - fatherValue);
         result.setData(values);
         return result;
     }
 
     
-    public BinaryTree<?> sumAndDif(BinaryTree <Integer> root) {
-        BinaryTree<List<Integer>> result = new BinaryTree<>(new ArrayList<>());
+    public BinaryTree<?> firstAndDif(BinaryTree <Integer> root) {
+        BinaryTree<Pair<Integer,Integer>> result = new BinaryTree<>();
         if(root != null) {
-            result = (BinaryTree<List<Integer>>) treeTraversal(root, 0, 0);
+            result = (BinaryTree<Pair<Integer,Integer>>) treeTraversal(root, 0, 0);
         }
         return result;
     }
@@ -81,7 +82,7 @@ public class ParcialArboles {
         Scanner sc = new Scanner(System.in);
         BinaryTree<Integer> root1 = arbol.crear_arbol(sc);
         arbol.inOrder(root1);
-        BinaryTree<?> root2 = arbol.sumAndDif(root1);
+        BinaryTree<?> root2 = arbol.firstAndDif(root1);
         System.out.println("\nRecorrido inorder del nuevo arbol:");
         arbol.inOrderList((BinaryTree<?>) root2);
     }
